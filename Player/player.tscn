@@ -7,6 +7,7 @@
 size = Vector2(21, 31)
 
 [node name="Player" type="CharacterBody2D" unique_id=1669813409]
+slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1605430138]
@@ -14,3 +15,13 @@ shape = SubResource("RectangleShape2D_sxk5m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=569722766]
 texture = ExtResource("2_btcbx")
+
+[node name="DodgeCooldown" type="Timer" parent="." unique_id=2039620722]
+process_callback = 0
+wait_time = 3.0
+
+[node name="DodgeActionTimer" type="Timer" parent="." unique_id=1988825818]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
