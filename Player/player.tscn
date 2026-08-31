@@ -21,7 +21,13 @@ process_callback = 0
 wait_time = 3.0
 
 [node name="DodgeActionTimer" type="Timer" parent="." unique_id=1988825818]
-wait_time = 0.3
+wait_time = 0.15
 one_shot = true
+
+[node name="PlayerUI" type="Control" parent="." unique_id=1406956837]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]

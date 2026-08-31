@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
+## - CONSTS - ##
+
+const BASE_SPEED : int = 200
+const DODGE_MULTIPLIER : float = 2
+
 
 ## - VARS - ##
 
-var speed : int = 200
+var speed : float
 var lastVelocity : Vector2 = Vector2(0,0)
 var dodgeMult : float = 2.5
 var currMoveState : MoveState
@@ -31,6 +36,7 @@ func _ready() -> void:
 	currMoveState = MoveState.NOT_MOVING
 	currCombatState = CombatState.OUT_OF_COMBAT
 	dodgeCooldown.set_wait_time(3)
+	dodgeCooldown.timeout.connect(_on_dodge_cooldown_timeout)
 	set_process_input(true)
 	
 	pass
@@ -51,21 +57,21 @@ func _physics_process(delta: float) -> void:
 	movePlayer()
 	checkDodgeCharges()
 	
-	print(dodgeCharges)
 	pass
 
 
 ## - ACTIONS - ##
 
 func movePlayer():
+	lastVelocity = velocity if velocity != Vector2.ZERO else lastVelocity
+	
 	velocity = Input.get_vector(
 		"move_left", 
 		"move_right", 
 		"move_up", 
 		"move_down") * speed
 	
-	lastVelocity = velocity if velocity != Vector2.ZERO else lastVelocity
-	
+
 	move_and_slide()
 
 func dodge() -> void:
@@ -79,7 +85,6 @@ func dodge() -> void:
 			$DodgeActionTimer.start(0.3)
 
 func checkDodgeCharges() -> void:
-	dodgeCooldown.timeout.connect(_on_dodge_cooldown_timeout)
 	if (dodgeCharges < maxDodgeCharges 
 		and dodgeCooldown.is_stopped()):
 			dodgeCooldown.start()
@@ -87,15 +92,15 @@ func checkDodgeCharges() -> void:
 func moveStateController() -> void:
 	if velocity == Vector2(0,0):
 		currMoveState = MoveState.NOT_MOVING
-		speed = 200
+		speed = BASE_SPEED
 		
 	elif !$DodgeActionTimer.is_stopped():
 		currMoveState = MoveState.DODGING
-		speed = 350
+		speed = DODGE_MULTIPLIER * BASE_SPEED
 		
 	else:
 		currMoveState = MoveState.MOVING
-		speed = 200
+		speed = BASE_SPEED
 
 func combatStateController() -> void:
 	pass
