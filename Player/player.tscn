@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://bxdjl2jqx1va4"]
 
-[ext_resource type="Script" uid="uid://cyinlr8oh6pib" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://bhivvto1h61ys" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://c5keqvxq0fhm7" path="res://icon.svg" id="2_btcbx"]
-[ext_resource type="Script" uid="uid://cvuxrm41fi31j" path="res://Player/label.gd" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://State/state_machine.gd" id="3_00tjw"]
+[ext_resource type="Script" uid="uid://bf8mlgjgxk8wa" path="res://State/Move/idle_state.gd" id="3_od3ui"]
+[ext_resource type="Script" uid="uid://d2ssuljvx5hax" path="res://State/Move/move_state.gd" id="4_00tjw"]
+[ext_resource type="Script" uid="uid://b3xteggfpwnuy" path="res://State/Move/dodge_state.gd" id="5_x3vf3"]
+[ext_resource type="Script" uid="uid://duhwep1fbera1" path="res://State/Combat/out_of_combat_state.gd" id="6_apopc"]
+[ext_resource type="Script" uid="uid://c3bohuarai806" path="res://State/Combat/attacking_state.gd" id="7_5htga"]
+[ext_resource type="Script" uid="uid://yhokv8g68b4l" path="res://Player/dodge_component.gd" id="8_apopc"]
+[ext_resource type="Script" uid="uid://cuge1tjcyfw7u" path="res://State/Combat/reloading_state.gd" id="8_p5o4e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxk5m"]
 size = Vector2(21, 31)
 
 [node name="Player" type="CharacterBody2D" unique_id=1669813409]
+editor_description = "Player Main Character"
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
 
@@ -17,14 +25,6 @@ shape = SubResource("RectangleShape2D_sxk5m")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=569722766]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_btcbx")
-
-[node name="DodgeCooldown" type="Timer" parent="." unique_id=2039620722]
-process_callback = 0
-wait_time = 3.0
-
-[node name="DodgeActionTimer" type="Timer" parent="." unique_id=1988825818]
-wait_time = 0.15
-one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1574460208]
 position = Vector2(0, -43)
@@ -38,6 +38,41 @@ grow_vertical = 2
 text = "Test"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("3_btcbx")
 
-[connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
+[node name="MoveStateMachine" type="Node" parent="." unique_id=32063925 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_00tjw")
+initial_state = NodePath("Move")
+
+[node name="Idle" type="Node" parent="MoveStateMachine" unique_id=2019711535]
+script = ExtResource("3_od3ui")
+metadata/_custom_type_script = "uid://bhunnrgdhv8ga"
+
+[node name="Move" type="Node" parent="MoveStateMachine" unique_id=1394810469]
+script = ExtResource("4_00tjw")
+metadata/_custom_type_script = "uid://bhunnrgdhv8ga"
+
+[node name="Dodge" type="Node" parent="MoveStateMachine" unique_id=1590460484]
+script = ExtResource("5_x3vf3")
+metadata/_custom_type_script = "uid://bhunnrgdhv8ga"
+
+[node name="CombatStateMachine" type="Node" parent="." unique_id=744219639]
+script = ExtResource("3_00tjw")
+
+[node name="OutOfCombat" type="Node" parent="CombatStateMachine" unique_id=821785492]
+script = ExtResource("6_apopc")
+metadata/_custom_type_script = "uid://bhunnrgdhv8ga"
+
+[node name="Attacking" type="Node" parent="CombatStateMachine" unique_id=108833482]
+script = ExtResource("7_5htga")
+metadata/_custom_type_script = "uid://bhunnrgdhv8ga"
+
+[node name="Reloading" type="Node" parent="CombatStateMachine" unique_id=873296684]
+script = ExtResource("8_p5o4e")
+metadata/_custom_type_script = "uid://bhunnrgdhv8ga"
+
+[node name="DodgeComponent" type="Node" parent="." unique_id=2009494986]
+script = ExtResource("8_apopc")
+
+[node name="DodgeCooldown" type="Timer" parent="DodgeComponent" unique_id=414096678]
+
+[node name="DodgeActionTimer" type="Timer" parent="DodgeComponent" unique_id=754419894]
