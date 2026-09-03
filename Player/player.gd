@@ -4,11 +4,11 @@ class_name Player
 @export var base_speed: int = 200
 var speed: float
 
+
 @onready var dodge: DodgeComponent = $DodgeComponent
 @onready var move_state_machine: StateMachine = $MoveStateMachine
 @onready var combat_state_machine: StateMachine = $CombatStateMachine
 
-# player.gd
 func _ready() -> void:
 	speed = base_speed
 	_assign_player_ref(move_state_machine)
