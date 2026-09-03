@@ -8,11 +8,15 @@ class_name DodgeComponent
 
 var charges: int
 
+signal dodgeCharges_changed(charges)
+
 @onready var cooldown: Timer = $DodgeCooldown
 @onready var action_timer: Timer = $DodgeActionTimer
 
 func _ready() -> void:
 	charges = max_charges
+	dodgeCharges_changed.emit(charges)
+
 	cooldown.wait_time = cooldown_time
 	cooldown.one_shot = true
 	action_timer.one_shot = true
@@ -22,6 +26,7 @@ func try_dodge() -> bool:
 	if charges <= 0:
 		return false
 	charges -= 1
+	dodgeCharges_changed.emit(charges)
 	action_timer.start(dodge_duration)
 	if cooldown.is_stopped():
 		cooldown.start()
@@ -31,3 +36,4 @@ func _on_cooldown_timeout() -> void:
 	if charges < max_charges:
 		charges += 1
 		cooldown.start()
+		dodgeCharges_changed.emit(charges)

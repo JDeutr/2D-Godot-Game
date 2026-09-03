@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bhivvto1h61ys" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://c5keqvxq0fhm7" path="res://icon.svg" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://State/state_machine.gd" id="3_00tjw"]
+[ext_resource type="Script" uid="uid://cvuxrm41fi31j" path="res://Player/label.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://bf8mlgjgxk8wa" path="res://State/Move/idle_state.gd" id="3_od3ui"]
 [ext_resource type="Script" uid="uid://d2ssuljvx5hax" path="res://State/Move/move_state.gd" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://b3xteggfpwnuy" path="res://State/Move/dodge_state.gd" id="5_x3vf3"]
@@ -35,9 +36,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Test"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_apopc")
 
 [node name="MoveStateMachine" type="Node" parent="." unique_id=32063925 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_00tjw")
@@ -76,3 +77,5 @@ script = ExtResource("8_apopc")
 [node name="DodgeCooldown" type="Timer" parent="DodgeComponent" unique_id=414096678]
 
 [node name="DodgeActionTimer" type="Timer" parent="DodgeComponent" unique_id=754419894]
+
+[connection signal="dodgeCharges_changed" from="DodgeComponent" to="Marker2D/Label" method="_on_dodge_component_dodge_charges_changed"]
