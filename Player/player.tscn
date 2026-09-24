@@ -10,359 +10,38 @@
 [ext_resource type="Script" uid="uid://c3bohuarai806" path="res://State/Combat/attacking_state.gd" id="7_5htga"]
 [ext_resource type="Script" uid="uid://yhokv8g68b4l" path="res://Player/dodge_component.gd" id="8_apopc"]
 [ext_resource type="Script" uid="uid://cuge1tjcyfw7u" path="res://State/Combat/reloading_state.gd" id="8_p5o4e"]
-[ext_resource type="Texture2D" uid="uid://cgka1hw20l4f5" path="res://Player/Sprites/Body.png" id="11_pisgm"]
-[ext_resource type="Texture2D" uid="uid://dsg7tsyek7a08" path="res://Player/Sprites/Gun.png" id="12_b1ygp"]
-[ext_resource type="Texture2D" uid="uid://dqpili4i0vywd" path="res://Player/Sprites/Head.png" id="13_o28un"]
-[ext_resource type="Texture2D" uid="uid://c8hv32n1txg6f" path="res://Player/Sprites/Left Arm.png" id="14_n471f"]
-[ext_resource type="Texture2D" uid="uid://djhooqdufv0jh" path="res://Player/Sprites/Left Leg.png" id="15_7emwf"]
-[ext_resource type="Texture2D" uid="uid://brd3qijgfbwk2" path="res://Player/Sprites/Right Arm.png" id="16_hshwv"]
-[ext_resource type="Texture2D" uid="uid://dpkvudepapr1s" path="res://Player/Sprites/Right Leg.png" id="17_gpjlu"]
+[ext_resource type="SpriteFrames" uid="uid://capwh138j2i1l" path="res://Player/Sprites/Player_Sprite.aseprite" id="11_apopc"]
+[ext_resource type="Script" uid="uid://buwl51d4mqpjl" path="res://Player/player_animations.gd" id="12_5htga"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxk5m"]
-size = Vector2(12, 29)
-
-[sub_resource type="Animation" id="Animation_pisgm"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Left Arm:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Left Arm:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Right Arm:position:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Right Arm:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Body:position:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Body:position:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Left Leg:position:x")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Left Leg:position:y")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Right Leg:position:x")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Right Leg:position:y")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/12/type = "bezier"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Gun:position:x")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/13/type = "bezier"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Gun:position:y")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_b1ygp"]
-resource_name = "idle"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 4, -0.33333334, 0, 0, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -2, -0.33333334, -0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Left Arm:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Left Arm:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Right Arm:position:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Right Arm:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Body:position:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Body:position:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Left Leg:position:x")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Left Leg:position:y")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Right Leg:position:x")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Right Leg:position:y")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/12/type = "bezier"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Gun:position:x")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/13/type = "bezier"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Gun:position:y")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o28un"]
-_data = {
-&"RESET": SubResource("Animation_pisgm"),
-&"idle": SubResource("Animation_b1ygp")
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
+radius = 2.5
+height = 13.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1669813409]
 editor_description = "Player Main Character"
-position = Vector2(319, 184)
+position = Vector2(22, 48)
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
+base_speed = 50
+metadata/_edit_vertical_guides_ = [-54.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1605430138]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_sxk5m")
+position = Vector2(-0.5, 3.5)
+shape = SubResource("CapsuleShape2D_apopc")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1574460208]
-position = Vector2(0, -43)
+position = Vector2(0, -22)
 
 [node name="Label" type="Label" parent="Marker2D" unique_id=1172585437]
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_pivot_ratio = Vector2(0, 0)
+theme_override_font_sizes/font_size = 8
+text = "bla"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_apopc")
@@ -406,55 +85,12 @@ script = ExtResource("8_apopc")
 
 [node name="DodgeActionTimer" type="Timer" parent="DodgeComponent" unique_id=754419894]
 
-[node name="Head" type="Sprite2D" parent="." unique_id=1547948648]
-z_index = 2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813409410]
 texture_filter = 1
-position = Vector2(4, -3)
-scale = Vector2(2, 2)
-texture = ExtResource("13_o28un")
-
-[node name="Left Arm" type="Sprite2D" parent="." unique_id=1300599077]
-z_index = 2
-texture_filter = 1
-position = Vector2(3, -3)
-scale = Vector2(2, 2)
-texture = ExtResource("14_n471f")
-
-[node name="Right Arm" type="Sprite2D" parent="." unique_id=205189010]
-z_index = 2
-texture_filter = 1
-position = Vector2(3, -3)
-scale = Vector2(2, 2)
-texture = ExtResource("16_hshwv")
-
-[node name="Body" type="Sprite2D" parent="." unique_id=1089140626]
-z_index = 1
-texture_filter = 1
-position = Vector2(3, -3)
-scale = Vector2(2, 2)
-texture = ExtResource("11_pisgm")
-
-[node name="Left Leg" type="Sprite2D" parent="." unique_id=1708185819]
-texture_filter = 1
-position = Vector2(3, -3)
-scale = Vector2(2, 2)
-texture = ExtResource("15_7emwf")
-
-[node name="Right Leg" type="Sprite2D" parent="." unique_id=62567323]
-texture_filter = 1
-position = Vector2(3, -3)
-scale = Vector2(2, 2)
-texture = ExtResource("17_gpjlu")
-
-[node name="Gun" type="Sprite2D" parent="." unique_id=1294310335]
-z_index = 1
-texture_filter = 1
-position = Vector2(3, -3)
-scale = Vector2(2, 2)
-texture = ExtResource("12_b1ygp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=410467589]
-libraries/ = SubResource("AnimationLibrary_o28un")
-autoplay = &"idle"
+position = Vector2(-1, 1)
+sprite_frames = ExtResource("11_apopc")
+animation = &"Walk-back"
+autoplay = "Idle-forward"
+script = ExtResource("12_5htga")
 
 [connection signal="dodgeCharges_changed" from="DodgeComponent" to="Marker2D/Label" method="_on_dodge_component_dodge_charges_changed"]
