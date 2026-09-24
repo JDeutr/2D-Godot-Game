@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://bxdjl2jqx1va4"]
 
 [ext_resource type="Script" uid="uid://bhivvto1h61ys" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://c5keqvxq0fhm7" path="res://icon.svg" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://State/state_machine.gd" id="3_00tjw"]
-[ext_resource type="Script" uid="uid://cvuxrm41fi31j" path="res://Player/label.gd" id="3_apopc"]
+[ext_resource type="Script" uid="uid://dm4lv46srg8id" path="res://Player/label.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://bf8mlgjgxk8wa" path="res://State/Move/idle_state.gd" id="3_od3ui"]
 [ext_resource type="Script" uid="uid://d2ssuljvx5hax" path="res://State/Move/move_state.gd" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://b3xteggfpwnuy" path="res://State/Move/dodge_state.gd" id="5_x3vf3"]
@@ -11,34 +10,42 @@
 [ext_resource type="Script" uid="uid://c3bohuarai806" path="res://State/Combat/attacking_state.gd" id="7_5htga"]
 [ext_resource type="Script" uid="uid://yhokv8g68b4l" path="res://Player/dodge_component.gd" id="8_apopc"]
 [ext_resource type="Script" uid="uid://cuge1tjcyfw7u" path="res://State/Combat/reloading_state.gd" id="8_p5o4e"]
+[ext_resource type="SpriteFrames" uid="uid://capwh138j2i1l" path="res://Player/Sprites/Player_Sprite.aseprite" id="11_apopc"]
+[ext_resource type="Script" uid="uid://buwl51d4mqpjl" path="res://Player/player_animations.gd" id="12_5htga"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxk5m"]
-size = Vector2(21, 31)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
+radius = 2.5
+height = 13.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1669813409]
 editor_description = "Player Main Character"
+position = Vector2(22, 48)
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
+base_speed = 50
+metadata/_edit_vertical_guides_ = [-54.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1605430138]
-shape = SubResource("RectangleShape2D_sxk5m")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=569722766]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_btcbx")
+position = Vector2(-0.5, 3.5)
+shape = SubResource("CapsuleShape2D_apopc")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1574460208]
-position = Vector2(0, -43)
+position = Vector2(0, -22)
 
 [node name="Label" type="Label" parent="Marker2D" unique_id=1172585437]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+texture_filter = 1
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_pivot_ratio = Vector2(0, 0)
+theme_override_font_sizes/font_size = 8
+text = "bla"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_apopc")
+metadata/_edit_use_anchors_ = true
 
 [node name="MoveStateMachine" type="Node" parent="." unique_id=32063925 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_00tjw")
@@ -77,5 +84,13 @@ script = ExtResource("8_apopc")
 [node name="DodgeCooldown" type="Timer" parent="DodgeComponent" unique_id=414096678]
 
 [node name="DodgeActionTimer" type="Timer" parent="DodgeComponent" unique_id=754419894]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813409410]
+texture_filter = 1
+position = Vector2(-1, 1)
+sprite_frames = ExtResource("11_apopc")
+animation = &"Walk-back"
+autoplay = "Idle-forward"
+script = ExtResource("12_5htga")
 
 [connection signal="dodgeCharges_changed" from="DodgeComponent" to="Marker2D/Label" method="_on_dodge_component_dodge_charges_changed"]

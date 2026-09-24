@@ -9,5 +9,5 @@ func physics_update(_delta: float) -> void:
 	player.move_and_slide()
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("dodge") and player.dodge.try_dodge():
+	if event.is_action_pressed("dodge") and player.dodge.try_dodge() and player.velocity != Vector2.ZERO:
 		transitioned.emit(self, "Dodge")

@@ -3,7 +3,7 @@ extends State
 var dodge_direction: Vector2
 
 func enter(_msg: Dictionary = {}) -> void:
-	dodge_direction = player.velocity.normalized() if player.velocity != Vector2.ZERO else Vector2.DOWN
+	dodge_direction = player.velocity.normalized()
 	player.dodge.action_timer.timeout.connect(_on_dodge_finished, CONNECT_ONE_SHOT)
 
 func physics_update(_delta: float) -> void:

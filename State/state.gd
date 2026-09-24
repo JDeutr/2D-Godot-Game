@@ -1,9 +1,9 @@
 extends Node
 class_name State
 
-signal transitioned(state: State, new_state_name: String)
+@onready var player: Player = owner as Player
 
-var player: Player
+signal transitioned(state: State, new_state_name: String)
 
 func enter(_msg: Dictionary = {}) -> void:
 	pass
