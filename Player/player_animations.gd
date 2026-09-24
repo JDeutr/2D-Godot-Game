@@ -15,7 +15,6 @@ func _physics_process(delta: float) -> void:
 	var facing_back = direction.y < 0
 
 	var current_state_name = player.move_state_machine.current_state.name
-	print(current_state_name)
 	var anim_name = ""
 
 	match current_state_name:
