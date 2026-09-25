@@ -5,4 +5,5 @@
 [node name="Test" type="Node2D" unique_id=1971547693]
 
 [node name="Player" parent="." unique_id=1669813409 instance=ExtResource("1_ko2s7")]
-position = Vector2(165, 78)
+position = Vector2(325, 205)
+base_speed = 100

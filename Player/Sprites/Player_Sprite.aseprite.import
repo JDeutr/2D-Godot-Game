@@ -2,7 +2,7 @@
 
 importer="aseprite_wizard.plugin.spriteframes"
 type="SpriteFrames"
-uid="uid://capwh138j2i1l"
+uid="uid://d21d6dj73dn3k"
 path="res://.godot/imported/Player_Sprite.aseprite-5a8f832bbefd5f8b9e5e489d0b483019.res"
 
 [deps]
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/Player_Sprite.aseprite-5a8f832bbefd5f8b9e5e48
 
 layer/exclude_layers_pattern=""
 layer/only_visible_layers=false
-sheet/sheet_type="columns"
+sheet/sheet_type="vertical"
 sheet/sheet_columns=12
 sheet/frame_padding=0
 sheet/scale=1

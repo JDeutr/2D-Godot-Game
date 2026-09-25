@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bhivvto1h61ys" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://State/state_machine.gd" id="3_00tjw"]
-[ext_resource type="Script" uid="uid://dm4lv46srg8id" path="res://Player/label.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://bf8mlgjgxk8wa" path="res://State/Move/idle_state.gd" id="3_od3ui"]
 [ext_resource type="Script" uid="uid://d2ssuljvx5hax" path="res://State/Move/move_state.gd" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://b3xteggfpwnuy" path="res://State/Move/dodge_state.gd" id="5_x3vf3"]
@@ -10,16 +9,28 @@
 [ext_resource type="Script" uid="uid://c3bohuarai806" path="res://State/Combat/attacking_state.gd" id="7_5htga"]
 [ext_resource type="Script" uid="uid://yhokv8g68b4l" path="res://Player/dodge_component.gd" id="8_apopc"]
 [ext_resource type="Script" uid="uid://cuge1tjcyfw7u" path="res://State/Combat/reloading_state.gd" id="8_p5o4e"]
-[ext_resource type="SpriteFrames" uid="uid://capwh138j2i1l" path="res://Player/Sprites/Player_Sprite.aseprite" id="11_apopc"]
+[ext_resource type="SpriteFrames" uid="uid://d21d6dj73dn3k" path="res://Player/Sprites/Player_Sprite.aseprite" id="11_apopc"]
 [ext_resource type="Script" uid="uid://buwl51d4mqpjl" path="res://Player/player_animations.gd" id="12_5htga"]
+[ext_resource type="Texture2D" uid="uid://ns7laca2akpi" path="res://Art/Guns/ak47.svg" id="13_p5o4e"]
+[ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://Player/crosshair.gd" id="14_dkpta"]
+[ext_resource type="Script" uid="uid://3ak01u6kaabj" path="res://Player/weapon.gd" id="14_gu6f8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
 radius = 2.5
 height = 13.0
 
+[sub_resource type="GDScript" id="GDScript_p5o4e"]
+script/source = "extends Label
+
+func _ready() -> void:
+	pass
+
+func _on_dodge_component_dodge_charges_changed(charges: Variant) -> void:
+	text = str(charges)
+"
+
 [node name="Player" type="CharacterBody2D" unique_id=1669813409]
 editor_description = "Player Main Character"
-position = Vector2(22, 48)
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
 base_speed = 50
@@ -29,10 +40,10 @@ metadata/_edit_vertical_guides_ = [-54.0]
 position = Vector2(-0.5, 3.5)
 shape = SubResource("CapsuleShape2D_apopc")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1574460208]
+[node name="DodgeCharges" type="Marker2D" parent="." unique_id=1574460208]
 position = Vector2(0, -22)
 
-[node name="Label" type="Label" parent="Marker2D" unique_id=1172585437]
+[node name="Label" type="Label" parent="DodgeCharges" unique_id=1172585437]
 texture_filter = 1
 offset_left = -6.0
 offset_top = -6.0
@@ -44,7 +55,7 @@ theme_override_font_sizes/font_size = 8
 text = "bla"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("3_apopc")
+script = SubResource("GDScript_p5o4e")
 metadata/_edit_use_anchors_ = true
 
 [node name="MoveStateMachine" type="Node" parent="." unique_id=32063925 node_paths=PackedStringArray("initial_state")]
@@ -85,12 +96,24 @@ script = ExtResource("8_apopc")
 
 [node name="DodgeActionTimer" type="Timer" parent="DodgeComponent" unique_id=754419894]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813409410]
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1813409410]
 texture_filter = 1
 position = Vector2(-1, 1)
+scale = Vector2(1.5, 1.5)
 sprite_frames = ExtResource("11_apopc")
-animation = &"Walk-back"
+animation = &"Idle-forward"
 autoplay = "Idle-forward"
 script = ExtResource("12_5htga")
 
-[connection signal="dodgeCharges_changed" from="DodgeComponent" to="Marker2D/Label" method="_on_dodge_component_dodge_charges_changed"]
+[node name="Weapon" type="Sprite2D" parent="." unique_id=1881891248]
+z_index = 1
+texture_filter = 1
+position = Vector2(3.8146973e-06, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_p5o4e")
+script = ExtResource("14_gu6f8")
+
+[node name="Crosshair" type="Marker2D" parent="." unique_id=1632252467]
+script = ExtResource("14_dkpta")
+
+[connection signal="dodgeCharges_changed" from="DodgeComponent" to="DodgeCharges/Label" method="_on_dodge_component_dodge_charges_changed"]
