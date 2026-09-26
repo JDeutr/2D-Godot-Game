@@ -9,15 +9,18 @@
 [ext_resource type="Script" uid="uid://c3bohuarai806" path="res://State/Combat/attacking_state.gd" id="7_5htga"]
 [ext_resource type="Script" uid="uid://yhokv8g68b4l" path="res://Player/dodge_component.gd" id="8_apopc"]
 [ext_resource type="Script" uid="uid://cuge1tjcyfw7u" path="res://State/Combat/reloading_state.gd" id="8_p5o4e"]
-[ext_resource type="SpriteFrames" uid="uid://d21d6dj73dn3k" path="res://Player/Sprites/Player_Sprite.aseprite" id="11_apopc"]
+[ext_resource type="SpriteFrames" uid="uid://dfshriw81668k" path="res://Player/Sprites/Player_Sprite.aseprite" id="11_apopc"]
 [ext_resource type="Script" uid="uid://buwl51d4mqpjl" path="res://Player/player_animations.gd" id="12_5htga"]
-[ext_resource type="Texture2D" uid="uid://ns7laca2akpi" path="res://Art/Guns/ak47.svg" id="13_p5o4e"]
+[ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/walk_trail.svg" id="12_pisgm"]
+[ext_resource type="Script" uid="uid://p6ux8lneu6fy" path="res://Player/walking_trail.gd" id="13_gu6f8"]
 [ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://Player/crosshair.gd" id="14_dkpta"]
-[ext_resource type="Script" uid="uid://3ak01u6kaabj" path="res://Player/weapon.gd" id="14_gu6f8"]
+[ext_resource type="Texture2D" uid="uid://ns7laca2akpi" path="res://Art/Guns/ak47.svg" id="15_dkpta"]
+[ext_resource type="Script" uid="uid://cixdw6btd7yfj" path="res://Player/gun_pivot.gd" id="15_lfmf2"]
+[ext_resource type="Texture2D" uid="uid://t4mcamukay5y" path="res://Player/Sprites/player-hands.svg" id="16_pisgm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
-radius = 2.5
-height = 13.0
+radius = 6.0
+height = 26.0
 
 [sub_resource type="GDScript" id="GDScript_p5o4e"]
 script/source = "extends Label
@@ -29,6 +32,34 @@ func _on_dodge_component_dodge_charges_changed(charges: Variant) -> void:
 	text = str(charges)
 "
 
+[sub_resource type="Curve" id="Curve_lfmf2"]
+_data = [Vector2(0.22500001, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.99375004, 0.033707857), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gu6f8"]
+curve = SubResource("Curve_lfmf2")
+
+[sub_resource type="Curve" id="Curve_gu6f8"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dkpta"]
+curve = SubResource("Curve_gu6f8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_esf6n"]
+lifetime_randomness = 0.29
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+angle_curve = SubResource("CurveTexture_dkpta")
+inherit_velocity_ratio = 0.055
+velocity_pivot = Vector3(0, 1, 0)
+spread = 94.451
+gravity = Vector3(0, -3, 0)
+scale_min = 0.5
+alpha_curve = SubResource("CurveTexture_gu6f8")
+
 [node name="Player" type="CharacterBody2D" unique_id=1669813409]
 editor_description = "Player Main Character"
 slide_on_ceiling = false
@@ -36,8 +67,7 @@ script = ExtResource("1_4ntmi")
 base_speed = 50
 metadata/_edit_vertical_guides_ = [-54.0]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1605430138]
-position = Vector2(-0.5, 3.5)
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1605430138]
 shape = SubResource("CapsuleShape2D_apopc")
 
 [node name="DodgeCharges" type="Marker2D" parent="." unique_id=1574460208]
@@ -98,22 +128,49 @@ script = ExtResource("8_apopc")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1813409410]
 texture_filter = 1
-position = Vector2(-1, 1)
+position = Vector2(-1, 0)
 scale = Vector2(1.5, 1.5)
 sprite_frames = ExtResource("11_apopc")
-animation = &"Idle-forward"
+animation = &"Walk-forward"
 autoplay = "Idle-forward"
 script = ExtResource("12_5htga")
 
-[node name="Weapon" type="Sprite2D" parent="." unique_id=1881891248]
-z_index = 1
-texture_filter = 1
-position = Vector2(3.8146973e-06, 0)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("13_p5o4e")
-script = ExtResource("14_gu6f8")
+[node name="WalkingTrail" type="GPUParticles2D" parent="Animation" unique_id=1004713702]
+z_index = -1
+position = Vector2(0.6666667, 8.666666)
+emitting = false
+texture = ExtResource("12_pisgm")
+lifetime = 0.52
+explosiveness = 0.2
+randomness = 0.2
+fract_delta = false
+process_material = SubResource("ParticleProcessMaterial_esf6n")
+script = ExtResource("13_gu6f8")
 
 [node name="Crosshair" type="Marker2D" parent="." unique_id=1632252467]
+texture_filter = 1
 script = ExtResource("14_dkpta")
 
+[node name="Hands" type="Node2D" parent="." unique_id=505373525]
+
+[node name="GunPivot" type="Marker2D" parent="Hands" unique_id=308547776]
+script = ExtResource("15_lfmf2")
+
+[node name="Hands" type="Sprite2D" parent="Hands/GunPivot" unique_id=1769869501]
+z_index = 1
+texture_filter = 1
+position = Vector2(-13, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_pisgm")
+
+[node name="Gun" type="Sprite2D" parent="Hands/GunPivot" unique_id=1687833400]
+texture_filter = 1
+position = Vector2(-3, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("15_dkpta")
+
+[node name="Muzzle" type="Marker2D" parent="Hands/GunPivot/Gun" unique_id=229189034]
+position = Vector2(-11, 3)
+
+[connection signal="state_changed" from="MoveStateMachine" to="Animation/WalkingTrail" method="_on_move_state_machine_state_changed"]
 [connection signal="dodgeCharges_changed" from="DodgeComponent" to="DodgeCharges/Label" method="_on_dodge_component_dodge_charges_changed"]

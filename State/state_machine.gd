@@ -3,6 +3,8 @@ class_name StateMachine
 
 @export var initial_state: State
 
+signal state_changed(new_state_name: String)
+
 var current_state: State
 var states: Dictionary = {}
 
@@ -50,3 +52,4 @@ func _on_state_transitioned(state: State, new_state_name: String) -> void:
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()
+	state_changed.emit(new_state.name)
