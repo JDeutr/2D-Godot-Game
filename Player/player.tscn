@@ -155,6 +155,7 @@ script = ExtResource("14_dkpta")
 
 [node name="GunPivot" type="Marker2D" parent="Hands" unique_id=308547776]
 script = ExtResource("15_lfmf2")
+bullet_velocity = 400.0
 
 [node name="Hands" type="Sprite2D" parent="Hands/GunPivot" unique_id=1769869501]
 z_index = 1
