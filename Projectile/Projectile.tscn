@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ccrfla2x8ig6s" path="res://Projectile/bullet.svg" id="2_whj0l"]
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/walk_trail.svg" id="3_whj0l"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whj0l"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esf6n"]
 size = Vector2(6, 3)
 
@@ -48,6 +50,7 @@ script = ExtResource("1_ghnax")
 
 [node name="Bullet" type="Sprite2D" parent="." unique_id=270362867]
 texture_filter = 1
+material = SubResource("ShaderMaterial_whj0l")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_whj0l")
 
@@ -59,7 +62,7 @@ shape = SubResource("RectangleShape2D_esf6n")
 [node name="Bullet_Trail" type="GPUParticles2D" parent="." unique_id=450346423]
 z_index = -1
 texture_filter = 1
-position = Vector2(-3, 0)
+position = Vector2(-4, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_whj0l")
 lifetime = 0.52
