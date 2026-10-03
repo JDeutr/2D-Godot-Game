@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 4.0
-@export var lifetime: float = 2.0
+@export var lifetime: float = 1.0
 var direction: Vector2 = Vector2.RIGHT
 
 func setup(spawn_position: Vector2, fire_direction: Vector2, velocity: float) -> void:

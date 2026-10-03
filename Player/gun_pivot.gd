@@ -2,9 +2,9 @@ extends Marker2D
 
 const BULLET_SCENE := preload("res://Projectile/Projectile.tscn")
 
-@export var fire_rate: float = 0.2
+@export var fire_rate: float = 5
 @export var bullet_velocity: float = 300
-@export_range(0, 180) var firing_spread: float = 2;
+@export_range(0, 360) var firing_spread: float = 2;
 @export var max_ammo: int = 30;
 @export var reload_time: float = 4;
 
@@ -12,7 +12,7 @@ var current_ammo: int = max_ammo
 var _can_fire: bool = true
 var _aim_direction: Vector2
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var mouse_pos := get_global_mouse_position()
 	_aim_direction = (mouse_pos - global_position).normalized()
 	rotation = (mouse_pos - global_position).angle() - PI
