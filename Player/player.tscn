@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxdjl2jqx1va4"]
 
 [ext_resource type="Script" uid="uid://bhivvto1h61ys" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://dw38lhln6ygy8" path="res://dodge_charges.gd" id="2_b1ygp"]
 [ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://State/state_machine.gd" id="3_00tjw"]
 [ext_resource type="Script" uid="uid://bf8mlgjgxk8wa" path="res://State/Move/idle_state.gd" id="3_od3ui"]
 [ext_resource type="Script" uid="uid://d2ssuljvx5hax" path="res://State/Move/move_state.gd" id="4_00tjw"]
@@ -14,23 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/walk_trail.svg" id="12_pisgm"]
 [ext_resource type="Script" uid="uid://p6ux8lneu6fy" path="res://Player/walking_trail.gd" id="13_gu6f8"]
 [ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://Player/crosshair.gd" id="14_dkpta"]
-[ext_resource type="Texture2D" uid="uid://ns7laca2akpi" path="res://Art/Guns/ak47.svg" id="15_dkpta"]
-[ext_resource type="Script" uid="uid://cixdw6btd7yfj" path="res://Player/gun_pivot.gd" id="15_lfmf2"]
-[ext_resource type="Texture2D" uid="uid://t4mcamukay5y" path="res://Player/Sprites/player-hands.svg" id="16_pisgm"]
+[ext_resource type="PackedScene" uid="uid://sljj2u0vbsjg" path="res://Player/gun_pivot.tscn" id="16_lfmf2"]
+[ext_resource type="Script" uid="uid://cqymp38nn4dyx" path="res://Player/hands.gd" id="16_pisgm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
 radius = 6.0
 height = 26.0
-
-[sub_resource type="GDScript" id="GDScript_p5o4e"]
-script/source = "extends Label
-
-func _ready() -> void:
-	pass
-
-func _on_dodge_component_dodge_charges_changed(charges: Variant) -> void:
-	text = str(charges)
-"
 
 [sub_resource type="Curve" id="Curve_lfmf2"]
 _data = [Vector2(0.22500001, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.99375004, 0.033707857), 0.0, 0.0, 0, 0]
@@ -70,10 +60,10 @@ metadata/_edit_vertical_guides_ = [-54.0]
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1605430138]
 shape = SubResource("CapsuleShape2D_apopc")
 
-[node name="DodgeCharges" type="Marker2D" parent="." unique_id=1574460208]
+[node name="DodgeCharges" type="Marker2D" parent="." unique_id=768415886]
 position = Vector2(0, -22)
 
-[node name="Label" type="Label" parent="DodgeCharges" unique_id=1172585437]
+[node name="Label" type="Label" parent="DodgeCharges" unique_id=1973457292]
 texture_filter = 1
 offset_left = -6.0
 offset_top = -6.0
@@ -85,7 +75,7 @@ theme_override_font_sizes/font_size = 8
 text = "bla"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = SubResource("GDScript_p5o4e")
+script = ExtResource("2_b1ygp")
 metadata/_edit_use_anchors_ = true
 
 [node name="MoveStateMachine" type="Node" parent="." unique_id=32063925 node_paths=PackedStringArray("initial_state")]
@@ -152,26 +142,13 @@ texture_filter = 1
 script = ExtResource("14_dkpta")
 
 [node name="Hands" type="Node2D" parent="." unique_id=505373525]
+script = ExtResource("16_pisgm")
 
-[node name="GunPivot" type="Marker2D" parent="Hands" unique_id=308547776]
-script = ExtResource("15_lfmf2")
-bullet_velocity = 400.0
-
-[node name="Hands" type="Sprite2D" parent="Hands/GunPivot" unique_id=1769869501]
-z_index = 1
-texture_filter = 1
-position = Vector2(-13, 4)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("16_pisgm")
-
-[node name="Gun" type="Sprite2D" parent="Hands/GunPivot" unique_id=1687833400]
-texture_filter = 1
-position = Vector2(-3, 0)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("15_dkpta")
-
-[node name="Muzzle" type="Marker2D" parent="Hands/GunPivot/Gun" unique_id=229189034]
-position = Vector2(-11, 3)
+[node name="GunPivot" parent="Hands" unique_id=270881107 instance=ExtResource("16_lfmf2")]
+position = Vector2(0, 6)
+gizmo_extents = 3.0
+fire_rate = 5.0
+firing_spread = 4.575
 
 [connection signal="state_changed" from="MoveStateMachine" to="Animation/WalkingTrail" method="_on_move_state_machine_state_changed"]
 [connection signal="dodgeCharges_changed" from="DodgeComponent" to="DodgeCharges/Label" method="_on_dodge_component_dodge_charges_changed"]

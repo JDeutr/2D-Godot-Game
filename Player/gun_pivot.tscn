@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://sljj2u0vbsjg"]
+
+[ext_resource type="Script" uid="uid://cixdw6btd7yfj" path="res://Player/gun_pivot.gd" id="1_aonkt"]
+[ext_resource type="Texture2D" uid="uid://t4mcamukay5y" path="res://Player/Sprites/player-hands.svg" id="2_0cqij"]
+[ext_resource type="Texture2D" uid="uid://ns7laca2akpi" path="res://Art/Guns/ak47.svg" id="3_g862c"]
+[ext_resource type="AudioStream" uid="uid://djmj7020wwc2p" path="res://Art/Guns/gun.mp3" id="4_0cqij"]
+
+[node name="GunPivot" type="Marker2D" unique_id=270881107]
+script = ExtResource("1_aonkt")
+bullet_velocity = 400.0
+firing_spread = 8.0
+
+[node name="Hands" type="Sprite2D" parent="." unique_id=607112396]
+z_index = 1
+texture_filter = 1
+position = Vector2(-13, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_0cqij")
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=1878717762]
+texture_filter = 1
+position = Vector2(-3, -5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_g862c")
+
+[node name="Muzzle" type="Marker2D" parent="Gun" unique_id=1177756022]
+position = Vector2(-12.666667, 2.6666667)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1940406495]
+stream = ExtResource("4_0cqij")
+volume_db = -30.002
+pitch_scale = 1.2
+max_polyphony = 5
+playback_type = 1

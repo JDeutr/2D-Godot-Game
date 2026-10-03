@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bvintgtghhsct" path="res://Projectile/projectile.gd" id="1_ghnax"]
 [ext_resource type="Texture2D" uid="uid://ccrfla2x8ig6s" path="res://Projectile/bullet.svg" id="2_whj0l"]
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/walk_trail.svg" id="3_whj0l"]
-[ext_resource type="Script" uid="uid://p6ux8lneu6fy" path="res://Player/walking_trail.gd" id="4_2pb4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esf6n"]
 size = Vector2(6, 3)
@@ -68,4 +67,3 @@ explosiveness = 0.2
 randomness = 0.2
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_cpvl6")
-script = ExtResource("4_2pb4h")
