@@ -1,6 +1,6 @@
 extends Marker2D
 
-const BULLET_SCENE := preload("res://Projectile/Projectile.tscn")
+const BULLET_SCENE := preload("res://Weapons/Projectile/Projectile.tscn")
 
 @export var fire_rate: float = 5  # shots per second
 @export var bullet_velocity: float = 300

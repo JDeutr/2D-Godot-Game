@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sljj2u0vbsjg"]
 
-[ext_resource type="Script" uid="uid://cixdw6btd7yfj" path="res://Player/gun_pivot.gd" id="1_aonkt"]
-[ext_resource type="Texture2D" uid="uid://t4mcamukay5y" path="res://Player/Sprites/player-hands.svg" id="2_0cqij"]
+[ext_resource type="Script" uid="uid://cixdw6btd7yfj" path="res://Entities/Player/gun_pivot.gd" id="1_aonkt"]
+[ext_resource type="Texture2D" uid="uid://t4mcamukay5y" path="res://Entities/Player/Sprites/player-hands.svg" id="2_0cqij"]
 [ext_resource type="Texture2D" uid="uid://ns7laca2akpi" path="res://Art/Guns/ak47.svg" id="3_0cqij"]
 [ext_resource type="AudioStream" uid="uid://djmj7020wwc2p" path="res://Art/Guns/gun.mp3" id="4_0cqij"]
 
