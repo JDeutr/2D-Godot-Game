@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 4.0
-@export var lifetime: float = 1.0
+@export var lifetime: float = 3.0
 @export var piercing: int = 1
 
 var direction: Vector2 = Vector2.RIGHT
@@ -12,18 +12,12 @@ func setup(spawn_position: Vector2, fire_direction: Vector2, velocity: float) ->
 	rotation = fire_direction.angle()
 	speed = velocity
 
-
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	$Lifetime.wait_time = lifetime
 	$Lifetime.one_shot = true
 	$Lifetime.timeout.connect(queue_free)
 	$Lifetime.start()
-
-
-func _physics_process(delta: float) -> void:
-	position += direction * speed * delta
-
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("half_wall"):

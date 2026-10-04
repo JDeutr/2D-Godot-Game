@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://owx8a0tasdfo"]
+
+[ext_resource type="PackedScene" uid="uid://c80y4yn0j1syj" path="res://Entities/TrainingDummy/training_dummy.tscn" id="1_0wtra"]
+[ext_resource type="Script" uid="uid://cntlgl3yw12y2" path="res://Levels/gun_range.gd" id="1_nq65j"]
+[ext_resource type="PackedScene" uid="uid://bxdjl2jqx1va4" path="res://Entities/Player/player.tscn" id="3_tysjs"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oo505"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21f1g"]
+size = Vector2(26, 388)
+
+[node name="GunRange" type="Node2D" unique_id=1382398138]
+script = ExtResource("1_nq65j")
+training_dummy_prefab = ExtResource("1_0wtra")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=877487323 groups=["half_wall"]]
+position = Vector2(150, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1677205010]
+scale = Vector2(0.04882812, 0.75781256)
+texture = SubResource("NoiseTexture2D_oo505")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1895496220 groups=["half_wall"]]
+shape = SubResource("RectangleShape2D_21f1g")
+
+[node name="Timer" type="Timer" parent="." unique_id=478291188]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Player" parent="." unique_id=1669813409 instance=ExtResource("3_tysjs")]
+position = Vector2(78, 178)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
