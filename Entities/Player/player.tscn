@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://buwl51d4mqpjl" path="res://Entities/Player/player_animations.gd" id="12_5htga"]
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/Assets/walk_trail.svg" id="12_pisgm"]
 [ext_resource type="Script" uid="uid://p6ux8lneu6fy" path="res://Entities/Player/walking_trail.gd" id="13_gu6f8"]
-[ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://Entities/Player/crosshair.gd" id="14_dkpta"]
-[ext_resource type="PackedScene" uid="uid://sljj2u0vbsjg" path="res://Entities/Player/gun_pivot.tscn" id="16_lfmf2"]
+[ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://UI/crosshair.gd" id="14_dkpta"]
+[ext_resource type="PackedScene" uid="uid://sljj2u0vbsjg" path="res://Weapons/gun_pivot.tscn" id="16_lfmf2"]
 [ext_resource type="Script" uid="uid://cqymp38nn4dyx" path="res://Entities/Player/hands.gd" id="16_pisgm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
