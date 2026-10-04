@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 @onready var player: Player = owner as Player
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if sprite_frames.has_animation("Idle-forward"):

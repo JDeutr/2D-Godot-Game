@@ -8,6 +8,7 @@ signal state_changed(new_state_name: String)
 var current_state: State
 var states: Dictionary = {}
 
+
 # state_machine.gd
 func _ready() -> void:
 	for child in get_children():
@@ -20,6 +21,7 @@ func _ready() -> void:
 	elif not states.is_empty():
 		current_state = states.values()[0]
 
+
 func start() -> void:
 	if current_state:
 		current_state.enter()
@@ -31,16 +33,19 @@ func start() -> void:
 		current_state = initial_state
 	elif not states.is_empty():
 		current_state = states.values()[0]
-	
+
 	current_state.enter()
+
 
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if current_state:
 		current_state.handle_input(event)
+
 
 func _on_state_transitioned(state: State, new_state_name: String) -> void:
 	if state != current_state:
