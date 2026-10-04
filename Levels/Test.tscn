@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cpulglo01w6dr"]
+
+[ext_resource type="PackedScene" uid="uid://bxdjl2jqx1va4" path="res://Entities/Player/player.tscn" id="1_ko2s7"]
+[ext_resource type="PackedScene" uid="uid://c80y4yn0j1syj" path="res://Entities/TrainingDummy/training_dummy.tscn" id="2_gxb1y"]
+[ext_resource type="Script" uid="uid://bdhajokkqy7b" path="res://UI/fps_counter.gd" id="3_0dy5s"]
+
+[node name="Test" type="Node2D" unique_id=1971547693]
+
+[node name="Player" parent="." unique_id=1669813409 instance=ExtResource("1_ko2s7")]
+position = Vector2(155, 117)
+base_speed = 100
+
+[node name="Enemy" parent="." unique_id=817557746 instance=ExtResource("2_gxb1y")]
+position = Vector2(337, 96)
+
+[node name="Label" type="Label" parent="." unique_id=664030536]
+offset_right = 85.0
+offset_bottom = 46.0
+text = "FPS: "
+script = ExtResource("3_0dy5s")
+
+[node name="Enemy2" parent="." unique_id=1575339803 instance=ExtResource("2_gxb1y")]
+position = Vector2(396, 172)
