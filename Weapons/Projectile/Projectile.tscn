@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ds7ravgg1n2rt"]
 
 [ext_resource type="Script" uid="uid://bvintgtghhsct" path="res://Weapons/Projectile/projectile.gd" id="1_ghnax"]
-[ext_resource type="Texture2D" uid="uid://ccrfla2x8ig6s" path="res://Weapons/Projectile/bullet.svg" id="2_whj0l"]
-[ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/walk_trail.svg" id="3_whj0l"]
+[ext_resource type="Texture2D" uid="uid://ccrfla2x8ig6s" path="res://Art/Projectiles/bullet.svg" id="2_whj0l"]
+[ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/Assets/walk_trail.svg" id="3_whj0l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_whj0l"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t4mcamukay5y"
-path="res://.godot/imported/player-hands.svg-0b06adb9fa45e3c47a2dea713f532cc2.ctex"
+uid="uid://dloooihorg41a"
+path="res://.godot/imported/Player_Sprite.png-e5aff81983317326183201fe6021902c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/Sprites/player-hands.svg"
-dest_files=["res://.godot/imported/player-hands.svg-0b06adb9fa45e3c47a2dea713f532cc2.ctex"]
+source_file="res://Art/Player/Player_Sprite.png"
+dest_files=["res://.godot/imported/Player_Sprite.png-e5aff81983317326183201fe6021902c.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

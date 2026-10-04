@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bhivvto1h61ys" path="res://Entities/Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://dw38lhln6ygy8" path="res://Components/Dodge/dodge_charges.gd" id="2_b1ygp"]
-[ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://Components/State/state_machine.gd" id="3_00tjw"]
-[ext_resource type="Script" uid="uid://bf8mlgjgxk8wa" path="res://Components/State/Move/idle_state.gd" id="3_od3ui"]
-[ext_resource type="Script" uid="uid://d2ssuljvx5hax" path="res://Components/State/Move/move_state.gd" id="4_00tjw"]
-[ext_resource type="Script" uid="uid://b3xteggfpwnuy" path="res://Components/State/Move/dodge_state.gd" id="5_x3vf3"]
-[ext_resource type="Script" uid="uid://duhwep1fbera1" path="res://Components/State/Combat/out_of_combat_state.gd" id="6_apopc"]
-[ext_resource type="Script" uid="uid://c3bohuarai806" path="res://Components/State/Combat/attacking_state.gd" id="7_5htga"]
+[ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://States/State/state_machine.gd" id="3_00tjw"]
+[ext_resource type="Script" uid="uid://bf8mlgjgxk8wa" path="res://States/State/Move/idle_state.gd" id="3_od3ui"]
+[ext_resource type="Script" uid="uid://d2ssuljvx5hax" path="res://States/State/Move/move_state.gd" id="4_00tjw"]
+[ext_resource type="Script" uid="uid://b3xteggfpwnuy" path="res://States/State/Move/dodge_state.gd" id="5_x3vf3"]
+[ext_resource type="Script" uid="uid://duhwep1fbera1" path="res://States/State/Combat/out_of_combat_state.gd" id="6_apopc"]
+[ext_resource type="Script" uid="uid://c3bohuarai806" path="res://States/State/Combat/attacking_state.gd" id="7_5htga"]
 [ext_resource type="Script" uid="uid://yhokv8g68b4l" path="res://Components/Dodge/dodge_component.gd" id="8_apopc"]
-[ext_resource type="Script" uid="uid://cuge1tjcyfw7u" path="res://Components/State/Combat/reloading_state.gd" id="8_p5o4e"]
-[ext_resource type="Texture2D" uid="uid://dloooihorg41a" path="res://Entities/Player/Sprites/Player_Sprite.png" id="11_pisgm"]
+[ext_resource type="Script" uid="uid://cuge1tjcyfw7u" path="res://States/State/Combat/reloading_state.gd" id="8_p5o4e"]
+[ext_resource type="Texture2D" uid="uid://dloooihorg41a" path="res://Art/Player/Player_Sprite.png" id="11_pisgm"]
 [ext_resource type="Script" uid="uid://buwl51d4mqpjl" path="res://Entities/Player/player_animations.gd" id="12_5htga"]
-[ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/walk_trail.svg" id="12_pisgm"]
+[ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/Assets/walk_trail.svg" id="12_pisgm"]
 [ext_resource type="Script" uid="uid://p6ux8lneu6fy" path="res://Entities/Player/walking_trail.gd" id="13_gu6f8"]
 [ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://Entities/Player/crosshair.gd" id="14_dkpta"]
 [ext_resource type="PackedScene" uid="uid://sljj2u0vbsjg" path="res://Entities/Player/gun_pivot.tscn" id="16_lfmf2"]
@@ -468,10 +468,9 @@ script = ExtResource("14_dkpta")
 [node name="Hands" type="Node2D" parent="." unique_id=505373525]
 script = ExtResource("16_pisgm")
 
-[node name="GunPivot" parent="Hands" unique_id=270881107 instance=ExtResource("16_lfmf2")]
+[node name="Gun" parent="Hands" unique_id=270881107 instance=ExtResource("16_lfmf2")]
 position = Vector2(0, 6)
 gizmo_extents = 3.0
-fire_rate = 30.0
 firing_spread = 12.58
 reload_time = 0.0
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://80cklowch0ko"
-path="res://.godot/imported/walk_trail.svg-ecbaa8abb1fae14fc44610665ec35771.ctex"
+uid="uid://ccrfla2x8ig6s"
+path="res://.godot/imported/bullet.svg-aac2c43989a0a253d65f137c1aa66bb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/walk_trail.svg"
-dest_files=["res://.godot/imported/walk_trail.svg-ecbaa8abb1fae14fc44610665ec35771.ctex"]
+source_file="res://Art/Projectiles/bullet.svg"
+dest_files=["res://.godot/imported/bullet.svg-aac2c43989a0a253d65f137c1aa66bb2.ctex"]
 
 [params]
 

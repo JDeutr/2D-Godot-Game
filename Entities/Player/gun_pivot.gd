@@ -53,7 +53,7 @@ func _shoot() -> void:
 	#return
 
 	current_ammo -= 1
-	$AudioStreamPlayer2D.play(0)
+	$GunSound.play(0)
 
 	var bullet := BULLET_SCENE.instantiate()
 	var spread = deg_to_rad(randf_range(-firing_spread / 2, firing_spread / 2))

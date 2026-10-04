@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk468ifv2jub5"
-path="res://.godot/imported/crosshair.svg-c75b171b28529c5ccb5b44b9b4232a73.ctex"
+uid="uid://t4mcamukay5y"
+path="res://.godot/imported/player-hands.svg-2b9c9b5627e863bef93d5cb87fa2e6de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/crosshair.svg"
-dest_files=["res://.godot/imported/crosshair.svg-c75b171b28529c5ccb5b44b9b4232a73.ctex"]
+source_file="res://Art/Player/player-hands.svg"
+dest_files=["res://.godot/imported/player-hands.svg-2b9c9b5627e863bef93d5cb87fa2e6de.ctex"]
 
 [params]
 
@@ -38,6 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=4.0
+svg/scale=1.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

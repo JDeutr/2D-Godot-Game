@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c80y4yn0j1syj"]
 
-[ext_resource type="Texture2D" uid="uid://cdv71ev1wism6" path="res://Art/target_dummy.svg" id="1_2pb1h"]
+[ext_resource type="Texture2D" uid="uid://cdv71ev1wism6" path="res://Art/Enemies/target_dummy.svg" id="1_2pb1h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_esf6n"]
 radius = 6.0
