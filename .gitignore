@@ -19,3 +19,6 @@ mono_crash.*.json
 =======
 mono_crash.*.json
 >>>>>>> 9c898525ad2b2d531bd880a2252f2c6cd8330bb9
+
+# addons to ignore
+addons/terminal
