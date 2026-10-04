@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://brd1mywwf2hs4"]
 
 [ext_resource type="Script" uid="uid://dq783xsuq7hll" path="res://Weapons/Projectiles/Rocket/rocket.gd" id="1_qo73x"]
-[ext_resource type="Texture2D" uid="uid://ccrfla2x8ig6s" path="res://Art/Projectiles/bullet.svg" id="2_f3k7e"]
+[ext_resource type="Texture2D" uid="uid://cj3uui226f5fi" path="res://Art/Projectiles/rocket.png" id="3_lp3h3"]
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/Assets/walk_trail.svg" id="3_vchkn"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_whj0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esf6n"]
 size = Vector2(6, 3)
@@ -45,15 +43,58 @@ scale_min = 0.04
 alpha_curve = SubResource("CurveTexture_gu6f8")
 emission_curve = SubResource("CurveTexture_2pb4h")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx6nf"]
+atlas = ExtResource("3_lp3h3")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw8ac"]
+atlas = ExtResource("3_lp3h3")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1t2j"]
+atlas = ExtResource("3_lp3h3")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1chdt"]
+atlas = ExtResource("3_lp3h3")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pqew"]
+atlas = ExtResource("3_lp3h3")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk5qk"]
+atlas = ExtResource("3_lp3h3")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_esf6n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx6nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw8ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1t2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1chdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pqew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk5qk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Rocket" type="Area2D" unique_id=1045533156]
 script = ExtResource("1_qo73x")
-
-[node name="Bullet" type="Sprite2D" parent="." unique_id=270362867]
-modulate = Color(0.10061847, 0.20846693, 0.20849356, 1)
-texture_filter = 1
-material = SubResource("ShaderMaterial_whj0l")
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_f3k7e")
 
 [node name="Lifetime" type="Timer" parent="." unique_id=753748865]
 
@@ -111,3 +152,9 @@ explosiveness = 0.2
 randomness = 0.2
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_cpvl6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1924417471]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_esf6n")
+autoplay = "default"

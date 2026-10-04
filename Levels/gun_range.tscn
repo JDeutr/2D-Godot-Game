@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c80y4yn0j1syj" path="res://Entities/TrainingDummy/training_dummy.tscn" id="1_0wtra"]
 [ext_resource type="Script" uid="uid://cntlgl3yw12y2" path="res://Levels/gun_range.gd" id="1_nq65j"]
 [ext_resource type="PackedScene" uid="uid://bxdjl2jqx1va4" path="res://Entities/Player/player.tscn" id="3_tysjs"]
+[ext_resource type="Script" uid="uid://bdhajokkqy7b" path="res://UI/fps_counter.gd" id="4_b8xgq"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oo505"]
 
@@ -30,5 +31,12 @@ autostart = true
 
 [node name="Player" parent="." unique_id=1669813409 instance=ExtResource("3_tysjs")]
 position = Vector2(78, 178)
+base_speed = 100
+
+[node name="Label" type="Label" parent="." unique_id=646177637]
+offset_right = 85.0
+offset_bottom = 46.0
+text = "FPS: "
+script = ExtResource("4_b8xgq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

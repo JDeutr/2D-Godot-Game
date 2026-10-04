@@ -1,12 +1,13 @@
 extends Marker2D
 
-const BULLET_SCENE := preload("res://Weapons/Projectiles/Lazer/lazer.tscn")
+const BULLET_SCENE := preload("res://Weapons/Projectiles/Rocket/rocket.tscn")
 
 @export var fire_rate: float = 5  # shots per second
 @export var bullet_velocity: float = 300
 @export_range(0, 360) var firing_spread: float = 2
 @export var max_ammo: int = 304
 @export var reload_time: float = 4
+@export var _projectile_amount: int = 1
 
 var current_ammo: int = max_ammo
 var _aim_direction: Vector2
@@ -28,7 +29,8 @@ func _process(delta: float) -> void:
 	else:
 		z_index = -1
 		
-	_handle_shooting(delta)
+	for n in _projectile_amount:
+		_handle_shooting(delta)
 
 	if Input.is_action_just_pressed("reload"):
 		_reload()
