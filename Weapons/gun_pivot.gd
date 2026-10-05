@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		_reload()
 
+
 func _handle_shooting(delta: float) -> void:
 	_cooldown -= delta
 	_buffer_timer = maxf(_buffer_timer - delta, 0.0)
@@ -60,6 +61,7 @@ func _handle_shooting(delta: float) -> void:
 		shots_fired += 1
 
 	_cooldown = maxf(_cooldown, 0.0)
+
 
 func _shoot() -> void:
 	current_ammo -= 1
