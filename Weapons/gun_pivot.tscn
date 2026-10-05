@@ -13,8 +13,12 @@ stream_0/stream = ExtResource("4_ddy7d")
 
 [node name="GunScene" type="Marker2D" unique_id=270881107]
 script = ExtResource("1_aonkt")
+fire_rate = null
 bullet_velocity = 400.0
 firing_spread = 85.0
+max_ammo = null
+reload_time = null
+_projectile_amount = null
 
 [node name="Hands" type="Sprite2D" parent="." unique_id=607112396]
 z_index = 1

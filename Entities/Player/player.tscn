@@ -471,10 +471,11 @@ script = ExtResource("16_pisgm")
 [node name="Gun" parent="Hands" unique_id=270881107 instance=ExtResource("16_lfmf2")]
 position = Vector2(0, 6)
 gizmo_extents = 3.0
-fire_rate = 100.0
+fire_rate = 5000.0
 firing_spread = 34.28
+max_ammo = 304
 reload_time = 0.0
-_projectile_amount = 5
+_projectile_amount = 1
 
 [connection signal="state_changed" from="MoveStateMachine" to="Animation/WalkingTrail" method="_on_move_state_machine_state_changed"]
 [connection signal="dodgeCharges_changed" from="DodgeComponent" to="DodgeCharges/Label" method="_on_dodge_component_dodge_charges_changed"]
