@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var base_speed: int = 200
+
+
 var speed: float
 
 @onready var dodge: DodgeComponent = $DodgeComponent

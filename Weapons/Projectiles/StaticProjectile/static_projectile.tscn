@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2rbm7g8tb4m8"]
 
-[ext_resource type="Script" uid="uid://nhmpd1ebdqtl" path="res://Weapons/Projectiles/StaticProjectile/projectile.gd" id="1_abgkm"]
+[ext_resource type="Script" uid="uid://nhmpd1ebdqtl" path="res://Weapons/Projectiles/StaticProjectile/static_projectile.gd" id="1_abgkm"]
 [ext_resource type="Texture2D" uid="uid://ccrfla2x8ig6s" path="res://Art/Projectiles/bullet.svg" id="2_fn866"]
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/Assets/walk_trail.svg" id="3_rnnto"]
 

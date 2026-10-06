@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/Assets/walk_trail.svg" id="12_pisgm"]
 [ext_resource type="Script" uid="uid://p6ux8lneu6fy" path="res://Entities/Player/walking_trail.gd" id="13_gu6f8"]
 [ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://UI/crosshair.gd" id="14_dkpta"]
-[ext_resource type="PackedScene" uid="uid://sljj2u0vbsjg" path="res://Weapons/gun_pivot.tscn" id="16_lfmf2"]
-[ext_resource type="Script" uid="uid://cqymp38nn4dyx" path="res://Entities/Player/hands.gd" id="16_pisgm"]
+[ext_resource type="PackedScene" uid="uid://sljj2u0vbsjg" path="res://Weapons/gun.tscn" id="16_lfmf2"]
+[ext_resource type="PackedScene" uid="uid://brd1mywwf2hs4" path="res://Weapons/Projectiles/Rocket/rocket.tscn" id="18_pjcup"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
 radius = 6.0
@@ -385,7 +385,7 @@ alpha_curve = SubResource("CurveTexture_gu6f8")
 editor_description = "Player Main Character"
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
-base_speed = 50
+base_speed = 100
 metadata/_edit_vertical_guides_ = [-54.0]
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1605430138]
@@ -466,13 +466,15 @@ texture_filter = 1
 script = ExtResource("14_dkpta")
 
 [node name="Hands" type="Node2D" parent="." unique_id=505373525]
-script = ExtResource("16_pisgm")
 
 [node name="Gun" parent="Hands" unique_id=270881107 instance=ExtResource("16_lfmf2")]
 position = Vector2(0, 6)
 gizmo_extents = 3.0
-firing_spread = 12.58
+bullet_scene = ExtResource("18_pjcup")
+fire_rate = 14.879
+firing_spread = 1.0
 reload_time = 0.0
+_projectile_amount = 12
 
 [connection signal="state_changed" from="MoveStateMachine" to="Animation/WalkingTrail" method="_on_move_state_machine_state_changed"]
 [connection signal="dodgeCharges_changed" from="DodgeComponent" to="DodgeCharges/Label" method="_on_dodge_component_dodge_charges_changed"]

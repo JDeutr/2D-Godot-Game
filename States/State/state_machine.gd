@@ -50,10 +50,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_state_transitioned(state: State, new_state_name: String) -> void:
 	if state != current_state:
 		return
+
 	var new_state: State = states.get(new_state_name.to_lower())
+	
 	if not new_state:
 		push_warning("StateMachine: no state named '%s'" % new_state_name)
 		return
+		
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()
