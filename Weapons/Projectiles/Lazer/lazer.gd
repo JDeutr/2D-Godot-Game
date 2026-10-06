@@ -1,9 +1,10 @@
 extends Area2D
 
-const projectileDamage = 80
-
 @export var speed: float = 300.0
 @export var lifetime: float = 0.3
+
+const projectileDamage = 80
+
 var direction: Vector2 = Vector2.RIGHT
 
 

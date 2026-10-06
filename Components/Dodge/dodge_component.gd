@@ -7,13 +7,12 @@ class_name DodgeComponent
 @export var dodge_duration: float = 0.3
 
 var charges: int
-@onready var player: Player = owner as Player
-
-signal dodgeCharges_changed(charges)
 
 @onready var cooldown: Timer = $DodgeCooldown
 @onready var action_timer: Timer = $DodgeActionTimer
+@onready var player: Player = owner as Player
 
+signal dodgeCharges_changed(charges)
 
 func _ready() -> void:
 	charges = max_charges

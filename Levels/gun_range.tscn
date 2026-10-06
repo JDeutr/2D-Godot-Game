@@ -31,7 +31,6 @@ autostart = true
 
 [node name="Player" parent="." unique_id=1669813409 instance=ExtResource("3_tysjs")]
 position = Vector2(78, 178)
-base_speed = 100
 
 [node name="Label" type="Label" parent="." unique_id=646177637]
 offset_right = 85.0

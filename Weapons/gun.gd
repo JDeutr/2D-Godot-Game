@@ -2,10 +2,11 @@ extends Marker2D
 
 const BUFFER_TIME: float = 0.1
 
-@export var bullet_scene: PackedScene = preload("res://weapons/projectiles/rocket/rocket.tscn")
-@export var fire_rate: float = 5  # shots per second
+
+@export_range(1, 360) var firing_spread: float = 2
+@export_range(1, 100) var fire_rate: float = 5  # shots per second
+@export var bullet_scene: PackedScene = preload("res://Weapons/Projectiles/rocket/rocket.tscn")
 @export var bullet_velocity: float = 300
-@export_range(0, 360) var firing_spread: float = 2
 @export var max_ammo: int = 304
 @export var reload_time: float = 4
 @export var _projectile_amount: int = 1
@@ -13,10 +14,12 @@ const BUFFER_TIME: float = 0.1
 var current_ammo: int = max_ammo
 
 var _aim_direction: Vector2
-var _fire_accumulator: float = 0.0
 var _cooldown: float = 0.0
 var _buffer_timer: float = 0.0
 
+func _ready() -> void:
+	firing_spread = min(360, (firing_spread + (firing_spread * _projectile_amount)))
+	print(firing_spread)
 
 func _process(delta: float) -> void:
 	var mouse_pos := get_global_mouse_position()
@@ -33,8 +36,8 @@ func _process(delta: float) -> void:
 	else:
 		z_index = -1
 
-	for n in _projectile_amount:
-		_handle_shooting(delta)
+	
+	_handle_shooting(delta)
 
 	if Input.is_action_just_pressed("reload"):
 		_reload()
@@ -60,20 +63,19 @@ func _handle_shooting(delta: float) -> void:
 		_buffer_timer = 0.0
 		shots_fired += 1
 
-	_cooldown = maxf(_cooldown, 0.0)
-
-
+	_cooldown = clampf(_cooldown, 0.0, interval)
+	
 func _shoot() -> void:
-	current_ammo -= 1
 	$GunSound.play(0)
 
-	var bullet := bullet_scene.instantiate()
-	var spread = deg_to_rad(randf_range(-firing_spread / 2, firing_spread / 2))
-	var firing_direction = _aim_direction.rotated(spread)
+	for n in _projectile_amount:
+		var bullet := bullet_scene.instantiate()
+		var spread = deg_to_rad(randf_range(-firing_spread / 2, firing_spread / 2))
+		var firing_direction = _aim_direction.rotated(spread)
 
-	bullet.setup($Gun/Muzzle.global_position, firing_direction, bullet_velocity)
+		bullet.setup($Gun/Muzzle.global_position, firing_direction, bullet_velocity)
 
-	get_tree().current_scene.add_child(bullet)
+		get_tree().current_scene.add_child(bullet)
 
 
 func _reload() -> void:

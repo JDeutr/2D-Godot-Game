@@ -25,7 +25,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
-
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("half_wall"):
 		return
