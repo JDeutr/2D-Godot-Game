@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dpihjarp3ghfd"]
+
+[ext_resource type="Script" uid="uid://boxnu2gkcqohv" path="res://Entities/Spawner/spawner.gd" id="1_jywnh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljxpt"]
+size = Vector2(1, 1)
+
+[node name="Spawner" type="Node2D" unique_id=1611981189]
+script = ExtResource("1_jywnh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=756571325]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=708042222]
+shape = SubResource("RectangleShape2D_ljxpt")
+disabled = true

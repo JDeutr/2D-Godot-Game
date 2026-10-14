@@ -380,7 +380,7 @@ gravity = Vector3(0, -3, 0)
 scale_min = 0.5
 alpha_curve = SubResource("CurveTexture_gu6f8")
 
-[node name="Player" type="CharacterBody2D" unique_id=1669813409]
+[node name="Player" type="CharacterBody2D" unique_id=1669813409 groups=["player"]]
 editor_description = "Player Main Character"
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
