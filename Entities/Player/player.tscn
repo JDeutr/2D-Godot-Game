@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://p6ux8lneu6fy" path="res://Entities/Player/walking_trail.gd" id="13_gu6f8"]
 [ext_resource type="Script" uid="uid://chd8ds8ro6vc3" path="res://UI/crosshair.gd" id="14_dkpta"]
 [ext_resource type="PackedScene" uid="uid://sljj2u0vbsjg" path="res://Weapons/gun.tscn" id="16_lfmf2"]
-[ext_resource type="PackedScene" uid="uid://brd1mywwf2hs4" path="res://Weapons/Projectiles/Rocket/rocket.tscn" id="18_pjcup"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apopc"]
 radius = 6.0
@@ -470,9 +469,8 @@ script = ExtResource("14_dkpta")
 [node name="Gun" parent="Hands" unique_id=270881107 instance=ExtResource("16_lfmf2")]
 position = Vector2(0, 6)
 gizmo_extents = 3.0
-bullet_scene = ExtResource("18_pjcup")
-fire_rate = 14.879
 firing_spread = 1.0
+fire_rate = 14.879
 reload_time = 0.0
 _projectile_amount = 12
 

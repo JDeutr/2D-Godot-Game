@@ -15,6 +15,10 @@ run/main_scene="uid://owx8a0tasdfo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ConstantValues="*uid://304qu78gg5ls"
+
 [debug]
 
 shader_language/warnings/enable=false
