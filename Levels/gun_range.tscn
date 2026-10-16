@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://owx8a0tasdfo"]
 
 [ext_resource type="PackedScene" uid="uid://c80y4yn0j1syj" path="res://Entities/TrainingDummy/training_dummy.tscn" id="1_0wtra"]
-[ext_resource type="Script" uid="uid://cntlgl3yw12y2" path="res://Levels/gun_range.gd" id="1_nq65j"]
 [ext_resource type="PackedScene" uid="uid://bxdjl2jqx1va4" path="res://Entities/Player/player.tscn" id="3_tysjs"]
+[ext_resource type="PackedScene" uid="uid://dpihjarp3ghfd" path="res://Entities/Spawner/spawner.tscn" id="4_b8xgq"]
 [ext_resource type="Script" uid="uid://bdhajokkqy7b" path="res://UI/fps_counter.gd" id="4_b8xgq"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oo505"]
@@ -11,8 +11,6 @@
 size = Vector2(26, 388)
 
 [node name="GunRange" type="Node2D" unique_id=1382398138]
-script = ExtResource("1_nq65j")
-training_dummy_prefab = ExtResource("1_0wtra")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=877487323 groups=["half_wall"]]
 position = Vector2(150, 180)
@@ -32,6 +30,12 @@ autostart = true
 [node name="Player" parent="." unique_id=1669813409 instance=ExtResource("3_tysjs")]
 position = Vector2(78, 178)
 
+[node name="Spawner" parent="." unique_id=1611981189 instance=ExtResource("4_b8xgq")]
+position = Vector2(395, 181)
+scale = Vector2(393, 311)
+enemies = Dictionary[PackedScene, int]({
+ExtResource("1_0wtra"): 15
+})
 [node name="Label" type="Label" parent="." unique_id=646177637]
 offset_right = 85.0
 offset_bottom = 46.0

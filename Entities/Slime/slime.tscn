@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ykec71umqyd5"]
+
+[ext_resource type="Script" uid="uid://5t7s5rpu6ein" path="res://Entities/Slime/slime.gd" id="1_ix0tp"]
+[ext_resource type="Script" uid="uid://c5vv2q7x6ang6" path="res://States/State/state_machine.gd" id="1_j61yr"]
+[ext_resource type="Texture2D" uid="uid://drm214jprhvmv" path="res://Art/Enemies/Sprite-0001.png" id="2_0incf"]
+[ext_resource type="Script" uid="uid://d27qvcq0mwiy1" path="res://States/State/Enemy/Move.gd" id="4_mnnyk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_av2wn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t51ub"]
+bg_color = Color(0, 0, 0, 0.5568628)
+border_color = Color(0.83308005, 0.79276013, 0.7562511, 1)
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_homxw"]
+bg_color = Color(0.47843137, 0.02745098, 0, 1)
+
+[node name="Slime" type="CharacterBody2D" unique_id=1575339803 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_ix0tp")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643811046]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_0incf")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=923401532]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_av2wn")
+
+[node name="Timer" type="Timer" parent="." unique_id=414576342]
+
+[node name="HP" type="ProgressBar" parent="." unique_id=1063893411]
+offset_left = -12.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = -8.0
+theme_override_styles/background = SubResource("StyleBoxFlat_t51ub")
+theme_override_styles/fill = SubResource("StyleBoxFlat_homxw")
+value = 20.0
+show_percentage = false
+
+[node name="MoveStateMachine" type="Node" parent="." unique_id=63208669 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_j61yr")
+initial_state = NodePath("Move")
+metadata/_custom_type_script = "uid://c5vv2q7x6ang6"
+
+[node name="Move" type="Node" parent="MoveStateMachine" unique_id=1413177969]
+script = ExtResource("4_mnnyk")
+metadata/_custom_type_script = "uid://bhunnrgdhv8ga"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
