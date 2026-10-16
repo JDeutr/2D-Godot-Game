@@ -1,5 +1,5 @@
 # constants.gd
-class_name Constants
+class_name Constants extends Node
 
 # -- Layers -- #
 const LAYER_WORLD : int = 1 << 0
