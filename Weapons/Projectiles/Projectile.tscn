@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://bvintgtghhsct" path="res://Weapons/Projectiles/projectile.gd" id="1_ghnax"]
 [ext_resource type="Texture2D" uid="uid://ccrfla2x8ig6s" path="res://Art/Projectiles/bullet.svg" id="2_whj0l"]
 [ext_resource type="Texture2D" uid="uid://80cklowch0ko" path="res://Art/Assets/walk_trail.svg" id="3_whj0l"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_whj0l"]
+[ext_resource type="Script" uid="uid://cffoq7nklirl3" path="res://Components/Damage/damage_component.gd" id="4_r6pwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esf6n"]
 size = Vector2(6, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whj0l"]
 
 [sub_resource type="Curve" id="Curve_hl16p"]
 _data = [Vector2(0.008571431, 1), 0.0, 0.0, 0, 0, Vector2(0.27428573, 0.44943827), 0.0, 0.0, 0, 0, Vector2(0.43714285, 0), 0.0, 0.0, 0, 0, Vector2(0.69142854, 0.058394074), 0.0, 0.0, 0, 0, Vector2(0.99375004, 0.033707857), 0.0, 0.0, 0, 0]
@@ -45,8 +46,13 @@ scale_min = 0.04
 alpha_curve = SubResource("CurveTexture_gu6f8")
 emission_curve = SubResource("CurveTexture_2pb4h")
 
-[node name="Projectile" type="Area2D" unique_id=1045533156]
+[node name="Projectile" type="Area2D" unique_id=1045533156 node_paths=PackedStringArray("damage_component")]
 script = ExtResource("1_ghnax")
+pierce = 0
+damage_component = NodePath("DamageComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506260304]
+shape = SubResource("RectangleShape2D_esf6n")
 
 [node name="Bullet" type="Sprite2D" parent="." unique_id=270362867]
 texture_filter = 1
@@ -55,9 +61,6 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_whj0l")
 
 [node name="Lifetime" type="Timer" parent="." unique_id=753748865]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1634609900]
-shape = SubResource("RectangleShape2D_esf6n")
 
 [node name="Bullet_Trail" type="GPUParticles2D" parent="." unique_id=450346423]
 z_index = -1
@@ -70,3 +73,12 @@ explosiveness = 0.2
 randomness = 0.2
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_cpvl6")
+
+[node name="DamageComponent" type="Area2D" parent="." unique_id=124422089]
+script = ExtResource("4_r6pwt")
+metadata/_custom_type_script = "uid://cffoq7nklirl3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent" unique_id=1634609900]
+shape = SubResource("RectangleShape2D_esf6n")
+
+[connection signal="finished" from="DamageComponent" to="." method="_on_damage_component_finished"]

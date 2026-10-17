@@ -2,28 +2,33 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var target = get_tree().get_first_node_in_group("player")
-@onready var move_state_machine: StateMachine = $MoveStateMachine
 
-const maxHealth: float = 200
-var currentHealth: float = maxHealth
-
+@export var health: HealthComponent;
+@export var health_bar: ProgressBar;
+@export var max_health: int = 100;
+@export var armour: int = 5;
 @export var speed: float = 50;
 @export var sprite: Sprite2D;
 
+
 func _ready() -> void:
-	$HP.max_value = maxHealth
-	$HP.value = currentHealth
-	move_state_machine.start()
+	health.setup(max_health, armour)
+	health_bar.setup(max_health)
+	health_bar.max_value = max_health
 
-func take_damage(damage: int):
-	currentHealth -= damage
-	$HP.visible = true
-	$HP.value = currentHealth
-	$Timer.start(1.0)
+func _physics_process(delta: float) -> void:
+	move(delta)
 	
-	if currentHealth <= 0:
-		queue_free()
+func move(delta: float) -> void:
+	var direction = (target.position - position).normalized()
+	velocity = lerp(velocity, direction * speed, 8.5 * delta)
+	move_and_slide()
+	
+	if direction.x > 0:
+		sprite.flip_h = false
+	elif direction.x < 0:
+		sprite.flip_h = true
+		
 
-
-func _on_timer_timeout() -> void:
-	$HP.visible = false;
+func _on_health_component_died() -> void:
+	queue_free();

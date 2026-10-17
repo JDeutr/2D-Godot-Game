@@ -10,5 +10,5 @@ func physics_update(_delta: float) -> void:
 	
 	if direction.x > 0:
 		enemy.sprite.flip_h = false
-	elif direction.x > 0:
+	elif direction.x < 0:
 		enemy.sprite.flip_h = true

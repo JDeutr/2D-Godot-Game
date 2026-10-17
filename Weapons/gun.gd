@@ -5,10 +5,10 @@ const BUFFER_TIME: float = 0.1
 
 @export_range(1, 360) var firing_spread: float = 2
 @export_range(1, 100) var fire_rate: float = 5  # shots per second
-@export var bullet_scene: PackedScene = preload("res://Weapons/Projectiles/Rocket/rocket.tscn")
+@export var bullet_scene: PackedScene = preload("res://Weapons/Projectiles/Projectile.tscn")
 @export var bullet_velocity: float = 300
 @export var max_ammo: int = 304
-@export var reload_time: float = 4
+@export var reload_time_seconds: float = 4
 @export var _projectile_amount: int = 1
 
 var current_ammo: int = max_ammo

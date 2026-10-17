@@ -12,6 +12,30 @@ size = Vector2(26, 388)
 
 [node name="GunRange" type="Node2D" unique_id=1382398138]
 
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1012612455 groups=["half_wall"]]
+position = Vector2(-30.00003, 742)
+rotation = -3.1415925
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=300821309]
+scale = Vector2(0.04882812, 0.75781256)
+texture = SubResource("NoiseTexture2D_oo505")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=529662509 groups=["half_wall"]]
+shape = SubResource("RectangleShape2D_21f1g")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=826267566 groups=["half_wall"]]
+position = Vector2(356, 386)
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1476391165]
+position = Vector2(-6, 3)
+scale = Vector2(0.04882812, 0.75781256)
+texture = SubResource("NoiseTexture2D_oo505")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=53242007 groups=["half_wall"]]
+position = Vector2(-409, 4.0000176)
+shape = SubResource("RectangleShape2D_21f1g")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=877487323 groups=["half_wall"]]
 position = Vector2(150, 180)
 
@@ -37,7 +61,7 @@ text = "FPS: "
 script = ExtResource("4_b8xgq")
 
 [node name="Spawner" parent="." unique_id=1611981189 instance=ExtResource("3_b8xgq")]
-position = Vector2(289, 176)
+position = Vector2(404, 176)
 enemies = Dictionary[PackedScene, int]({
 ExtResource("4_kw5v5"): 123
 })
