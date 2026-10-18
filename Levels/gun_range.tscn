@@ -63,7 +63,7 @@ script = ExtResource("4_b8xgq")
 [node name="Spawner" parent="." unique_id=1611981189 instance=ExtResource("3_b8xgq")]
 position = Vector2(404, 176)
 enemies = Dictionary[PackedScene, int]({
-ExtResource("4_kw5v5"): 123
+ExtResource("4_kw5v5"): 12
 })
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

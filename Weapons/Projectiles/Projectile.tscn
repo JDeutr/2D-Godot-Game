@@ -48,7 +48,6 @@ emission_curve = SubResource("CurveTexture_2pb4h")
 
 [node name="Projectile" type="Area2D" unique_id=1045533156 node_paths=PackedStringArray("damage_component")]
 script = ExtResource("1_ghnax")
-pierce = 0
 damage_component = NodePath("DamageComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506260304]

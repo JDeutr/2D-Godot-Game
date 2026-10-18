@@ -7,6 +7,8 @@ const BUFFER_TIME: float = 0.1
 @export_range(1, 100) var fire_rate: float = 5  # shots per second
 @export var bullet_scene: PackedScene = preload("res://Weapons/Projectiles/Projectile.tscn")
 @export var bullet_velocity: float = 300
+@export var bullet_damage: int = 4
+@export var pierce_amount: int = 1
 @export var max_ammo: int = 304
 @export var reload_time_seconds: float = 4
 @export var _projectile_amount: int = 1
@@ -73,7 +75,11 @@ func _shoot() -> void:
 		var spread = deg_to_rad(randf_range(-firing_spread / 2, firing_spread / 2))
 		var firing_direction = _aim_direction.rotated(spread)
 
-		bullet.setup($Gun/Muzzle.global_position, firing_direction, bullet_velocity)
+		bullet.setup($Gun/Muzzle.global_position, 
+				firing_direction, 
+				bullet_velocity,
+				bullet_damage,
+				pierce_amount)
 
 		get_tree().current_scene.add_child(bullet)
 

@@ -7,7 +7,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_av2wn"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mnnyk"]
+[sub_resource type="Theme" id="Theme_mnnyk"]
 
 [node name="Slime" type="CharacterBody2D" unique_id=1575339803 node_paths=PackedStringArray("health", "health_bar", "sprite")]
 script = ExtResource("1_ix0tp")
@@ -33,14 +33,13 @@ metadata/_custom_type_script = "uid://dc63q8trlsl86"
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1013988353]
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
-material = SubResource("CanvasItemMaterial_mnnyk")
 offset_left = -14.0
 offset_top = -11.0
 offset_right = 13.0
 offset_bottom = -7.0
+theme = SubResource("Theme_mnnyk")
 theme_override_colors/font_color = Color(0.8666667, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.7806942, 4.548356e-06, 4.813075e-07, 1)
-fill_mode = 1
 show_percentage = false
 script = ExtResource("4_mnnyk")
 

@@ -1,14 +1,16 @@
 extends Area2D
 
-@export var damage: int = 5
 @export var speed: float = 4.0
 @export var lifetime: float = 1.0
-@export var pierce: int = 1
 @export var damage_component: DamageComponent
 
 var direction: Vector2 = Vector2.RIGHT
 
-func setup(spawn_position: Vector2, fire_direction: Vector2, velocity: float) -> void:
+func setup(spawn_position: Vector2, 
+ 			fire_direction: Vector2, 
+			velocity: float,
+			damage: int,
+			pierce: int) -> void:
 	global_position = spawn_position
 	direction = fire_direction
 	rotation = fire_direction.angle()
